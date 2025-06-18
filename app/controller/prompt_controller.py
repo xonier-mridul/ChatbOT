@@ -79,20 +79,20 @@ async def handle_incoming_prompt(response: Response, content: dict):
             if output.get("step") == "result":
                 break
         result_msg = outputs[-1]
-        tts = gTTS(text=result_msg, lang='en', slow=False )
-        filename = f"speech_{uuid.uuid4()}.mp3"
-        filepath = os.path.join("temp", filename)
+        # tts = gTTS(text=result_msg, lang='en', slow=False )
+        # filename = f"speech_{uuid.uuid4()}.mp3"
+        # filepath = os.path.join("temp", filename)
       
        
-        os.makedirs("temp", exist_ok=True)
-        tts.save(filepath)
+        # os.makedirs("temp", exist_ok=True)
+        # tts.save(filepath)
         
     
         response.status_code = status.HTTP_200_OK
         return {
             "message": "Response retrieved successfully",
             "step": result_msg,
-            "audio_file": f"/audio/{filename}"
+            # "audio_file": f"/audio/{filename}"
         }
 
     except Exception as e:
